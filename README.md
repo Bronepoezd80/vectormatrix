@@ -1,4 +1,2 @@
-# array
-Dynamic memory allocation for vectors and matrices in C.
-
-Depends on project xalloc, install it first!
+# Vector and Matrix
+Dynamic memory allocation for vectors and matrices
