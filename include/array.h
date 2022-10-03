@@ -29,6 +29,35 @@ extern "C" {
     putchar('\n');                                                        \
   } while (0)
 
+#define make_matrix(A_, M_, N_)                                                \
+  do {                                                                         \
+    make_vector(A_, (M_) + 1);                                                 \
+    for (size_t make_matrix_loop_counter = 0; make_matrix_loop_counter < (M_); \
+         ++make_matrix_loop_counter) {                                         \
+      make_vector((A_)[make_matrix_loop_counter], (N_));                       \
+    }                                                                          \
+    (A_)[M_] = NULL;                                                           \
+  } while (0)
+#define free_matrix(A_)                              \
+  do {                                               \
+    if (A_ != NULL) {                                \
+      for (size_t free_matrix_loop_counter = 0;      \
+           (A_)[free_matrix_loop_counter] != NULL;   \
+           ++free_matrix_loop_counter) {             \
+        free_vector((A_)[free_matrix_loop_counter]); \
+      }                                              \
+      free_vector(A_);                               \
+    }                                                \
+  } while (0)
+#define print_matrix(FMT_, A_, M_, N_)                                         \
+  do {                                                                         \
+    for (size_t print_matrix_loop_counter = 0; print_matrix_loop_counter < M_; \
+         ++print_matrix_loop_counter) {                                        \
+      print_vector(FMT_, A_[print_matrix_loop_counter], N_);                   \
+    }                                                                          \
+    putchar('\n');                                                             \
+  } while (0)
+
 #ifdef __cplusplus
 }
 #endif

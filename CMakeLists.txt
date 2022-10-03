@@ -76,7 +76,7 @@ endmacro()
 set(TARGET_TEST_ ${PROJECT_NAME}_test)
 
 add_program(${TARGET_TEST_}1_${C_SRC_EXT_} ${TARGET_TEST_}1 ${C_SRC_EXT_})
-#add_program(${TARGET_TEST_}2_${C_SRC_EXT_} ${TARGET_TEST_}2 ${C_SRC_EXT_})
+add_program(${TARGET_TEST_}2_${C_SRC_EXT_} ${TARGET_TEST_}2 ${C_SRC_EXT_})
 #add_program(${TARGET_TEST_}3_${C_SRC_EXT_} ${TARGET_TEST_}3 ${C_SRC_EXT_})
 
 #add_program(${TARGET_TEST_}1_${CXX_SRC_EXT_} ${TARGET_TEST_}1 ${CXX_SRC_EXT_})
