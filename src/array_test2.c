@@ -9,17 +9,22 @@
 
 #include <array.h>
 
-int main(void) {
-  int m = 5, n = 8;
+typedef struct matrix_ {
   double **a;
-  make_matrix(a, m, n);
-  for (int i = 0; i < m; ++i) {
-    for (int j = 0; j < n; ++j) {
-      a[i][j] = i * j * m;
+  int n_col;
+  int m_row;
+} matrix;
+
+int main(void) {
+  matrix a = {NULL, 5, 8};
+  make_matrix(a.a, a.m_row, a.n_col);
+  for (int i = 0; i < a.m_row; ++i) {
+    for (int j = 0; j < a.n_col; ++j) {
+      a.a[i][j] = j + ((double)i / 10);
     }
   }
-  print_matrix("%12.2f", a, m, n);
-  free_matrix(a);
+  print_matrix("%.2f", a.a, a.m_row, a.n_col);
+  free_matrix(a.a);
 
   return EXIT_SUCCESS;
 }

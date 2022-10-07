@@ -3,14 +3,13 @@
  * jakob.janzen80@gmail.com
  * 2022-10-03
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <array.h>
 
 int main(void) {
-  int vector_size = 100;
+  int vector_size = 10;
   double *x;
   make_vector(x, vector_size);
   for (int i = 0; i < vector_size; ++i) {
