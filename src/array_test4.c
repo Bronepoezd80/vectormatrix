@@ -22,7 +22,7 @@ int main(void) {
       }
     }
   }
-  print_4array("%.2f", a, m, n, o, p);
+  print_4array("%8.2f", a, m, n, o, p);
   free_4array(a);
 
   return EXIT_SUCCESS;

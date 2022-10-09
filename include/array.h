@@ -27,11 +27,23 @@ extern "C" {
     V_ = NULL;          \
   } while (0)
 
+#ifdef PRINT_ARRAY_VERBOSE
+#define print_vector_column(NUM_)            \
+  do {                                       \
+    printf(" column[%zu] ", (size_t)(NUM_)); \
+  } while (0)
+#else
+#define print_vector_column(NUM_) \
+  do {                            \
+    printf(" ");                  \
+  } while (0)
+#endif
+
 #define print_vector(FMT_, V_, N_COL_)                                        \
   do {                                                                        \
     for (size_t print_vector_loop_counter = 0;                                \
          print_vector_loop_counter < (N_COL_); ++print_vector_loop_counter) { \
-      printf(" .col[%zu] ", print_vector_loop_counter + 1);                   \
+      print_vector_column(print_vector_loop_counter + 1);                     \
       printf(FMT_, (V_)[print_vector_loop_counter]);                          \
     }                                                                         \
     putchar('\n');                                                            \
@@ -64,11 +76,23 @@ extern "C" {
     }                                                \
   } while (0)
 
+#ifdef PRINT_ARRAY_VERBOSE
+#define print_matrix_row(NUM_)                    \
+  do {                                            \
+    printf("        row[%zu]->", (size_t)(NUM_)); \
+  } while (0)
+#else
+#define print_matrix_row(NUM_) \
+  do {                         \
+    printf(" ");               \
+  } while (0)
+#endif
+
 #define print_matrix(FMT_, A_, M_ROW_, N_COL_)                              \
   do {                                                                      \
     for (size_t print_matrix_loop_counter = 0;                              \
          print_matrix_loop_counter < M_ROW_; ++print_matrix_loop_counter) { \
-      printf("        row[%zu]->", print_matrix_loop_counter + 1);          \
+      print_matrix_row(print_matrix_loop_counter + 1);                      \
       print_vector(FMT_, (A_)[print_matrix_loop_counter], (N_COL_));        \
     }                                                                       \
   } while (0)
@@ -100,11 +124,23 @@ extern "C" {
     }                                                \
   } while (0)
 
+#ifdef PRINT_ARRAY_VERBOSE
+#define print_3array_block(NUM_)                \
+  do {                                          \
+    printf("    level[%zu]\n", (size_t)(NUM_)); \
+  } while (0)
+#else
+#define print_3array_block(NUM_) \
+  do {                           \
+    printf(" \n");               \
+  } while (0)
+#endif
+
 #define print_3array(FMT_, A_, M_ROW_, N_COL_, O_LVL_)                         \
   do {                                                                         \
     for (size_t print_3array_loop_counter = 0;                                 \
          print_3array_loop_counter < O_LVL_; ++print_3array_loop_counter) {    \
-      printf("    lvl[%zu]\n", print_3array_loop_counter + 1);                 \
+      print_3array_block(print_3array_loop_counter + 1);                       \
       print_matrix(FMT_, (A_)[print_3array_loop_counter], (M_ROW_), (N_COL_)); \
     }                                                                          \
   } while (0)
@@ -137,11 +173,23 @@ extern "C" {
     }                                                \
   } while (0)
 
+#ifdef PRINT_ARRAY_VERBOSE
+#define print_4array_block(NUM_)            \
+  do {                                      \
+    printf("block[%zu]\n", (size_t)(NUM_)); \
+  } while (0)
+#else
+#define print_4array_block(NUM_) \
+  do {                           \
+    printf(" \n");               \
+  } while (0)
+#endif
+
 #define print_4array(FMT_, A_, M_ROW_, N_COL_, O_LVL_, P_BLK_)                \
   do {                                                                        \
     for (size_t print_4array_loop_counter = 0;                                \
          print_4array_loop_counter < P_BLK_; ++print_4array_loop_counter) {   \
-      printf("blk[%zu]\n", print_4array_loop_counter + 1);                    \
+      print_4array_block(print_4array_loop_counter + 1);                      \
       print_3array(FMT_, (A_)[print_4array_loop_counter], (M_ROW_), (N_COL_), \
                    (O_LVL_));                                                 \
     }                                                                         \

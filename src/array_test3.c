@@ -20,7 +20,7 @@ int main(void) {
       }
     }
   }
-  print_3array("%.2f", a, m, n, o);
+  print_3array("%8.2f", a, m, n, o);
   free_3array(a);
 
   return EXIT_SUCCESS;
